@@ -5,7 +5,7 @@
       - libavahi-compat-libdnssd-dev
       - python3-pip
       - python3-venv
-    state: absent
+    state: latest
     update_cache: yes
 
 - name: Create an user for Home Assistant
@@ -19,7 +19,6 @@
     name:
       - wheel
       - homeassistant
-    executable: pip3
     virtualenv_command: /usr/bin/python3 -m venv
     virtualenv: "{{ hass_user_home }}/homeassistant/"
 ...
