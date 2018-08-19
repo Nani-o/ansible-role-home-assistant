@@ -3,6 +3,8 @@
   apt:
     name:
       - libavahi-compat-libdnssd-dev
+      - libffi-dev
+      - libssl-dev
       - python3-pip
       - python3-venv
     state: latest
@@ -14,11 +16,19 @@
     state: present
     home: "{{ hass_user_home }}"
 
-- name: Installing homeassistant in a virtualenv
+- name: Installing requirements in a virtualenv
   pip:
     name:
       - wheel
-      - homeassistant
+      - colorlog
+    state: latest
+    virtualenv_command: /usr/bin/python3 -m venv
+    virtualenv: "{{ hass_user_home }}/homeassistant/"
+
+- name: Installing homeassistant in a virtualenv
+  pip:
+    name: homeassistant
+    state: latest
     virtualenv_command: /usr/bin/python3 -m venv
     virtualenv: "{{ hass_user_home }}/homeassistant/"
 ...
