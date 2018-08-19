@@ -19,6 +19,6 @@
     name:
       - wheel
       - homeassistant
-    virtualenv_python: python3
+    virtualenv_command: /usr/bin/python3 -m venv
     virtualenv: "{{ hass_user_home }}/homeassistant/"
 ...
