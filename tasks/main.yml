@@ -1,0 +1,11 @@
+---
+- block:
+    - name: Install Home Assistant
+      import_tasks: "install.yml"
+      tags: home_assistant_install
+
+#    - name: Configure Home Assistant
+#      import_tasks: "configure.yml"
+#      tags: home_assistant_config
+  tags: home_assistant
+...

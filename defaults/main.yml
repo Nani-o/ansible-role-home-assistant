@@ -1,0 +1,4 @@
+---
+hass_user: homeassistant
+hass_user_home: "/home/{{ hass_user }}"
+...

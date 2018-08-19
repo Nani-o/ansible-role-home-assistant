@@ -1,0 +1,11 @@
+---
+- hosts: container
+  tasks:
+    - name: Check hound is listening
+      uri:
+        url: http://127.0.0.1:8123/states
+      retries: 18
+      delay: 10
+      register: webpage
+      until: webpage.status == "200"
+...

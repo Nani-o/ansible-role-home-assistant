@@ -1,0 +1,21 @@
+---
+dist: xenial
+language: python
+python: "2.7"
+
+sudo: true
+
+env:
+  - test_os: ubuntu18.04
+  - test_os: ubuntu16.04
+  - test_os: ubuntu14.04
+
+install:
+  # Cloning testing template
+  - sudo mkdir /etc/ansible
+  - sudo chown -R "${USER}:" /etc/ansible
+  - git clone https://github.com/Nani-o/ansible-template-role-test /etc/ansible
+
+script:
+  # Run tests.
+  - bash /etc/ansible/test.sh

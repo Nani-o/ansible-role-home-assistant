@@ -1,0 +1,24 @@
+---
+- name: Installing dependencies
+  apt:
+    name:
+      - libavahi-compat-libdnssd-dev
+      - python3-pip
+      - python3-venv
+    state: absent
+    update_cache: yes
+
+- name: Create an user for Home Assistant
+  user:
+    name: "{{ hass_user }}"
+    state: present
+    home: "{{ hass_user_home }}"
+
+- name: Installing homeassistant in a virtualenv
+  pip:
+    name:
+      - wheel
+      - homeassistant
+    virtualenv_python: python3
+    virtualenv: "{{ hass_user_home }}/homeassistant/"
+...
