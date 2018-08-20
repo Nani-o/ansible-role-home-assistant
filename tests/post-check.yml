@@ -9,7 +9,7 @@
           delay: 10
           register: webpage
           until: webpage.status == "200"
-      except:
+      rescue:
         - name: Execute systemctl status homeassistant
           shell: systemctl status homeassistant
           register: status_command
@@ -17,4 +17,7 @@
         - name: Show output of command
           debug:
             var: status_command
+            
+        - name: Fail the play
+          fail:
 ...
