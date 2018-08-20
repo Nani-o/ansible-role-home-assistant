@@ -1,4 +1,5 @@
 ---
 hass_user: homeassistant
 hass_user_home: "/home/{{ hass_user }}"
+hass_config_dir: "{{ hass_user_home }}/.homeassistant"
 ...

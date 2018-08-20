@@ -1,0 +1,11 @@
+[Unit]
+Description=Home Assistant Server
+After=network.target
+
+[Service]
+Type=simple
+User={{ hass_user }}
+ExecStart={{ hass_user_home }}/homeassistant/bin/hass --config {{ hass_config_dir }}
+
+[Install]
+WantedBy=multi-user.target

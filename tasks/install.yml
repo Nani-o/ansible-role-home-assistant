@@ -31,4 +31,17 @@
     state: latest
     virtualenv_command: /usr/bin/python3 -m venv
     virtualenv: "{{ hass_user_home }}/homeassistant/"
+  notify:
+    - restart homeassistant
+
+- name: Installing systemd service
+  template:
+    src: homeassistant.service.j2
+    dest: /etc/systemd/system/homeassistant.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - systemd daemon-reload
+    - restart homeassistant
 ...
