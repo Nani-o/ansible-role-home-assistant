@@ -7,11 +7,11 @@ cd $(dirname $0)
 [[ ! -d .git ]] && git init
 
 ORIGIN=$(git remote -v | grep 'origin' | grep '(fetch)' | awk '{print $2}')
-[[ "$ORIGIN" != $1 ]] && git remote add -f origin $1 && git reset --hard origin/master
+[[ "$ORIGIN" != $1 ]] && git remote remove origin master && git remote add -f origin $1 && git reset --hard origin/master
 
-BEFORE=$(git log | tail -1)
+BEFORE=$(git log | head -1)
 git pull origin master
-AFTER=$(git log | tail -1)
+AFTER=$(git log | head -1)
 [[ "$BEFORE" != "$AFTER" ]] && sudo systemctl restart homeassistant
 
 exit 0
