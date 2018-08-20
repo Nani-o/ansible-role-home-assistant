@@ -7,7 +7,7 @@ cd $(dirname $0)
 [[ ! -d .git ]] && git init
 
 ORIGIN=$(git remote -v | grep 'origin' | grep '(fetch)' | awk '{print $2}')
-[[ "$ORIGIN" != $1 ]] && git remote add -f origin $1
+[[ "$ORIGIN" != $1 ]] && git remote add -f origin $1 && git reset --hard origin/master
 
 FETCH=$(git remote update origin)
 [[ "$FETCH" != "Fetching origin" ]] && git reset --hard origin/master
