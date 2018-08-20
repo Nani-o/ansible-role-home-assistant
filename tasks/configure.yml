@@ -26,6 +26,7 @@
 
     - name: Execute the pulling script
       shell: "{{ hass_config_dir }}/pull_config.sh {{ hass_config_git_url }}"
+      changed_when: false
 
     - name: Setup a cron job
       cron:
