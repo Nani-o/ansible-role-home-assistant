@@ -11,3 +11,5 @@ ORIGIN=$(git remote -v | grep 'origin' | grep '(fetch)' | awk '{print $2}')
 
 FETCH=$(git remote update origin)
 [[ "$FETCH" != "Fetching origin" ]] && git reset --hard origin/master
+
+exit 0
