@@ -1,18 +1,18 @@
 #!/bin/bash
 
 [[ -z "$1" ]] && echo "usage: $0 GIT_URL" && exit 1
+GIT_URL="$1"
 
 cd $(dirname $0)
 
 [[ ! -d .git ]] && git init
-
-BEFORE=$(git log | head -1)
+BEFORE=$(git log 2>&1 | head -1)
 
 ORIGIN=$(git remote -v | grep 'origin' | grep '(fetch)' | awk '{print $2}')
-if [[ "$ORIGIN" != $1 ]]
+if [[ "$ORIGIN" != "$GIT_URL" ]]
 then
-    git remote remove origin
-    git remote add -f origin $1
+    [[ ! -z "$ORIGIN" ]] && git remote remove origin
+    git remote add -f origin "$GIT_URL"
     git reset --hard origin/master
 fi
 
