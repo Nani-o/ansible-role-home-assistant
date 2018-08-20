@@ -15,7 +15,6 @@
     name: "{{ hass_user }}"
     state: present
     home: "{{ hass_user_home }}"
-    shell: /sbin/nologin
 
 - name: Installing requirements in a virtualenv
   pip:
