@@ -1,4 +1,11 @@
 ---
+- name: Create config dir
+  file:
+    path: "{{ hass_config_dir }}"
+    state: directory
+    owner: "{{ hass_user }}"
+    group: "{{ hass_user }}"
+
 - name: Deploy secrets
   template:
     src: secrets.yaml.j2
