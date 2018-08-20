@@ -8,7 +8,7 @@
           retries: 36
           delay: 10
           register: webpage
-          until: webpage.status == "200"
+          until: webpage.status == 200
       rescue:
         - name: Execute systemctl status homeassistant
           shell: systemctl status homeassistant
