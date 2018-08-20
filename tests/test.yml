@@ -1,5 +1,17 @@
 ---
 - hosts: container
+  vars:
+    hass_config_git_url: "https://github.com/Nani-o/home-assistant-config"
+    hass_config_secrets:
+      http_password: welcome
+      latitude: 0.0000000
+      longitude: 0.0000000
+      elevation: 0
+      time_zone: UTC
+      rm_mini_ip: 1.1.1.1
+      rm_mini_mac: 'FF:FF:FF:FF:FF:FF'
+      rm_mini_send_packet: switch.broadlink_send_packet_1_1_1_1
+      lg_tv_ip: 1.1.1.1
   roles:
     - role-to-test
 ...

@@ -1,0 +1,30 @@
+---
+- name: Deploy secrets
+  template:
+    src: secrets.yaml.j2
+    dest: "{{ hass_config_dir }}/secrets.yaml"
+    owner: "{{ hass_user }}"
+    group: "{{ hass_user }}"
+    mode: 0600
+  when: "hass_config_secrets is defined"
+
+- block:
+    - name: Deploy pulling script
+      copy:
+        src: pull_config.sh
+        dest: "{{ hass_config_dir }}/"
+        owner: "{{ hass_user }}"
+        group: "{{ hass_user }}"
+        mode: 0755
+
+    - name: Execute the pulling script
+      shell: "{{ hass_config_dir }}/pull_config.sh {{ hass_config_git_url }}"
+
+    - name: Setup a cron job
+      cron:
+        job: "{{ hass_config_dir }}/pull_config.sh {{ hass_config_git_url }}"
+        name: Pull homeassistant config from repo
+        minute: "*/5"
+        user: "{{ hass_user }}"
+  when: "hass_config_git_url is defined"
+...
