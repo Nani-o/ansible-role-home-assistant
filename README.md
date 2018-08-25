@@ -3,14 +3,13 @@
 home-assistant
 --------------
 
-This role installs [Home Assistant](https://www.home-assistant.io), an home automation bridge.
+This role installs [Home Assistant](https://www.home-assistant.io), an home automation bridge. I only test it against latest Debian release, the goal is to deploy on a raspberry pi with raspbian.
 
 Compatibility
 -------------
 
-- Ubuntu 14.04
-- Ubuntu 16.04
-- Ubuntu 18.04
+- Debian 9
+- Raspbian
 
 Variables
 ---------
