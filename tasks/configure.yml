@@ -40,24 +40,4 @@
         minute: "*/5"
         user: "{{ hass_user }}"
   when: "hass_config_git_url is defined"
-
-- block:
-    - name: Make sure custom components folder exists
-      file:
-        path: "{{ hass_config_dir }}/custom_components"
-        owner: "{{ hass_user }}"
-        group: "{{ hass_user }}"
-        mode: 0755
-        state: directory
-
-    - name: Deploy custom updater component
-      get_url:
-        url: https://raw.githubusercontent.com/custom-components/custom_updater/master/custom_components/custom_updater.py
-        dest: "{{ hass_config_dir }}/custom_components/custom_updater.py"
-        owner: "{{ hass_user }}"
-        group: "{{ hass_user }}"
-        mode: 0644
-      notify:
-        - restart homeassistant
-  when: "hass_install_custom_updater"
 ...

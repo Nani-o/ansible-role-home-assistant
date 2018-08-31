@@ -74,16 +74,6 @@ The git url to a repository containing the homeassistant configuration you would
 hass_config_git_url: https://github.com/Nani-o/home-assistant-config
 ```
 
-###### hass_install_custom_updater
-
-A boolean to control whether or not the homeassistant [custom_updater](https://github.com/custom-components/custom_updater) should be installed.
-
-By default this var is set to `True`
-
-```YAML
-hass_install_custom_updater: True
-```
-
 Example Playbook
 ----------------
 
