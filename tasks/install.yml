@@ -15,6 +15,7 @@
     name:
       - python-gilt
       - plexapi
+      - PyYaml
     executable: pip3
     state: latest
 
