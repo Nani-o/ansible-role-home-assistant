@@ -10,6 +10,13 @@
     state: latest
     update_cache: yes
 
+- name: Install dependencies for scripts
+  pip:
+    name:
+      - python-gilt
+      - plexapi
+    state: latest
+
 - name: Create an user for Home Assistant
   user:
     name: "{{ hass_user }}"
