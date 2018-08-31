@@ -15,6 +15,7 @@
     name:
       - python-gilt
       - plexapi
+    executable: pip3
     state: latest
 
 - name: Create an user for Home Assistant
