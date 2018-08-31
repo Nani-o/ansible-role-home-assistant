@@ -19,12 +19,19 @@ fi
 git pull origin master
 
 COMMIT_AFTER=$(git log | head -1)
-[[ "$COMMIT_BEFORE" != "$COMMIT_AFTER" ]] && sudo systemctl restart homeassistant
+[[ "$COMMIT_BEFORE" != "$COMMIT_AFTER" ]] && RESTART_FLAG="1"
+
 
 [[ ! -f gilt.yml ]] && exit 0
 GILT_BEFORE=$(find custom_components/ -type f | xargs -L 1 -P 5 -I {} md5sum {} | sort)
 gilt overlay
 GILT_AFTER=$(find custom_components/ -type f | xargs -L 1 -P 5 -I {} md5sum {} | sort)
-[[ "$GILT_BEFORE" != "$GILT_AFTER" ]] && sudo systemctl restart homeassistant
+[[ "$GILT_BEFORE" != "$GILT_AFTER" ]] && RESTART_FLAG="1"
+
+../homeassistant/bin/hass -c . --script check_config > /dev/null
+RC="$?"
+[[ "$RC" != "0" ]] && RESTART_FLAG="0"
+
+[[ "$RESTART_FLAG" == "1" ]] && sudo systemctl restart homeassistant
 
 exit 0
