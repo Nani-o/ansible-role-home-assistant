@@ -16,7 +16,7 @@
       - python-gilt
       - plexapi
       - PyYaml
-      - pyatv
+      - git+https://github.com/postlund/pyatv@fix_bugs
     executable: pip3
     state: latest
 
