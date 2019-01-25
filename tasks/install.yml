@@ -2,6 +2,7 @@
 - name: Installing dependencies
   apt:
     name:
+      - python-setuptools
       - libavahi-compat-libdnssd-dev
       - libffi-dev
       - libssl-dev
