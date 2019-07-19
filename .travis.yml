@@ -7,6 +7,7 @@ sudo: true
 
 env:
   - test_os: debian9
+  - test_os: debian10
 
 install:
   # Cloning testing template
