@@ -33,7 +33,7 @@
       - wheel
       - colorlog
     state: latest
-    virtualenv_command: /usr/bin/python3 -m venv
+    virtualenv_command: /usr/local/bin/python3 -m venv
     virtualenv: "{{ hass_venv_dir }}"
   become: yes
   become_user: "{{ hass_user }}"
@@ -42,7 +42,7 @@
   pip:
     name: homeassistant
     state: latest
-    virtualenv_command: /usr/bin/python3 -m venv
+    virtualenv_command: /usr/local/bin/python3 -m venv
     virtualenv: "{{ hass_venv_dir }}"
   become: yes
   become_user: "{{ hass_user }}"
