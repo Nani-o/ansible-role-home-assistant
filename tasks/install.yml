@@ -1,13 +1,22 @@
 ---
 - name: Installing dependencies
   apt:
-    name:
-      - python-setuptools
-      - libavahi-compat-libdnssd-dev
+    name:      
+      - python3.9
+      - python3.9-dev
+      - python3.9-venv
+      - python3-pip
       - libffi-dev
       - libssl-dev
-      - python3-pip
-      - python3-venv
+      - libjpeg-dev
+      - zlib1g-dev
+      - autoconf
+      - build-essential
+      - libopenjp2-7
+      - libtiff5
+      - libturbojpeg
+      - tzdata
+      - ffmpeg
     state: latest
     update_cache: yes
 
@@ -15,9 +24,7 @@
   pip:
     name:
       - python-gilt
-      - plexapi
       - PyYaml
-      - git+https://github.com/postlund/pyatv@v0.3.12
     executable: pip3
     state: latest
 
@@ -33,7 +40,7 @@
       - wheel
       - colorlog
     state: latest
-    virtualenv_command: /usr/local/bin/python3 -m venv
+    virtualenv_command: /usr/bin/python3.9 -m venv
     virtualenv: "{{ hass_venv_dir }}"
   become: yes
   become_user: "{{ hass_user }}"
@@ -42,7 +49,7 @@
   pip:
     name: homeassistant
     state: latest
-    virtualenv_command: /usr/local/bin/python3 -m venv
+    virtualenv_command: /usr/bin/python3 -m venv
     virtualenv: "{{ hass_venv_dir }}"
   become: yes
   become_user: "{{ hass_user }}"
